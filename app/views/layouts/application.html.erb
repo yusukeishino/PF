@@ -10,9 +10,10 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <!--ヘッダー部分-->
   <body>
     <div class="logp"><%= image_tag 'hg-logo.png', size: "150x150" %></div>
-    <div class="nav">
+    <div class="nav pull-right">
       <% if user_signed_in? %>
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
