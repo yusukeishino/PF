@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Pf</title>
+    <title>Hobby Graph</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,18 +11,21 @@
   </head>
 
   <body>
-    <% if user_signed_in? %>
+    <div class="logp"><%= image_tag 'hg-logo.png', size: "150x150" %></div>
+    <div class="nav">
+      <% if user_signed_in? %>
       <li>
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
-    <% else %>
+     <% else %>
       <li>
         <%= link_to "新規登録", new_user_registration_path %>
       </li>
       <li>
         <%= link_to "ログイン", new_user_session_path %>
       </li>
-    <% end %>
+     <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
