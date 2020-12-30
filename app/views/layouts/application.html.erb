@@ -10,22 +10,30 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <div class="logp"><%= image_tag 'hg-logo.png', size: "150x150" %></div>
-    <div class="nav">
+  <!--ヘッダー部分-->
+  <body class="container">
+    <div class="row col-md-8">
+    <nav>
+     <!--ロゴ-->
+     <p></p><div class="logp"><%= image_tag 'hg-logo.png', size: "60x60" %>Hobby Graph</div></p>
+     <!--nav-->
+     <ul class="nav float-right">
       <% if user_signed_in? %>
-      <li>
+      <li class="nav-item">
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
      <% else %>
-      <li>
+      <li class="nav-item">
         <%= link_to "新規登録", new_user_registration_path %>
       </li>
-      <li>
+      <li class="nav-item">
         <%= link_to "ログイン", new_user_session_path %>
       </li>
+     </ul>
      <% end %>
+    </nav>
     </div>
     <%= yield %>
   </body>
 </html>
+
