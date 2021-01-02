@@ -1,0 +1,2 @@
+module HobbyImagesHelper
+end

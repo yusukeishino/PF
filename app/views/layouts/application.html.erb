@@ -19,10 +19,15 @@
      <!--nav-->
      <ul class="nav float-right">
       <% if user_signed_in? %>
+      <!--ログイン後-->
+      <li class="nav-item">
+        <%= link_to "新規投稿", new_hobby_image_path %>
+      </li>
       <li class="nav-item">
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
      <% else %>
+     <!--ログイン前-->
       <li class="nav-item">
         <%= link_to "新規登録", new_user_registration_path %>
       </li>
