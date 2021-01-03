@@ -1,24 +1,41 @@
-# README
+# HobbyGraph
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+プラモデル、フィギュア好きの為の投稿サイトです。
+登録しなくても投稿は閲覧可能です。
 
-Things you may want to cover:
+### サイトテーマ
+プラモデル製作やフィギュアを飾ったりすることが好きな人が、
+気軽に投稿し交流できることがテーマです。
 
-* Ruby version
+### テーマを選んだ理由
+まず1つ目として私がプラモデルを作ることが好きという点です。
+２つ目として、コロナ禍においておうち時間が増えたと思うのですが、
+家で簡単で気軽にできる趣味としてプラモデル製作だったり
+フィギュアを飾ったりすることだと思いました。
+おうちにに籠りがちになってしまうので、
+プラモデルで他者と気軽に交流が出来るサイトがあればいいなと思い、
+このテーマを選択しました。
 
-* System dependencies
+### ターゲットユーザ
+プラモデル、フィギュア好き
 
-* Configuration
+### 主な利用シーン
+家での時間を持て余しているとき、プラモデルを作っているとき
 
-* Database creation
+## 設計書
+<...>
 
-* Database initialization
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1UgK-6l38k5T81XjcTIn7CHnGRkB_sBXS5xQWAVhWmks/edit#gid=0
 
-* How to run the test suite
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- 外部サービスの画像素材・音声素材を使用した場合は、必ずサービス名とURLを明記してください。
+- 使用しない場合は、使用素材の項目をREADMEから削除してください。
