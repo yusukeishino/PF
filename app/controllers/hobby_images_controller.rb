@@ -17,6 +17,7 @@ class HobbyImagesController < ApplicationController
 
   def show
     @image = HobbyImage.find(params[:id])
+    @image_comment = ImageComment.new
   end
 
   def destroy
