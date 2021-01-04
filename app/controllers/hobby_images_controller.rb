@@ -16,6 +16,7 @@ class HobbyImagesController < ApplicationController
   end
 
   def show
+    @image = HobbyImage.find(params[:id])
   end
 
   def destroy
@@ -24,7 +25,7 @@ class HobbyImagesController < ApplicationController
   private
 
   def hobby_image_params
-    params.require(:hobby_image).permit(:image_id, :body, :user_id)
+    params.require(:hobby_image).permit(:image, :body, :user_id)
   end
 
 
