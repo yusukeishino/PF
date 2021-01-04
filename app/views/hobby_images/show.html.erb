@@ -1,0 +1,7 @@
+<h1>投稿詳細</h1>
+<!--投稿者名-->
+ <%= @image.user.name %>
+ <!--投稿画像-->
+ <%= attachment_image_tag @image, :image, size: "150x150", format: 'jpg', fallback: "no_image.jpg" %>
+ <!--画像説明-->
+ <%= @image.body %>
