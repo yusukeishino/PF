@@ -7,4 +7,7 @@ class User < ApplicationRecord
   has_many :hobby_images, dependent: :destroy
   has_many :image_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+
+  attachment :user_image
+
 end
