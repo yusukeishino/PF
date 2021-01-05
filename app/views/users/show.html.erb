@@ -5,7 +5,19 @@
 <h3><%= @user.name %></h3>
 <!--自己紹介-->
 <h3><%= @user.body %></h3>
-<% if @user.id == current_user.id %>
+
+<!--フォロー/フォロワー-->
+<p><%= "フォロー数: #{@user.follower_count}" %></p>
+<p><%= "フォロワー数: #{@user.followed.count}" %></p>
+<% unless @user == current_user %>
+  <% if current_user.following?(@user) %>
+    <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
+  <% else %>
+    <%= link_to 'フォローする', follow_path(@user.id), method: :POST %>
+  <% end %>
+<% end %>
+<!--プロフィール編集リンク、@user == current_userはmodelに定義-->
+<% if @user.current_user?(current_user) %>
  <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
 <% end %>
 <h3>投稿一覧</h3>
