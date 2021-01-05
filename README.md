@@ -24,7 +24,8 @@
 家での時間を持て余しているとき、プラモデルを作っているとき
 
 ## 設計書
-<...>
+ER図、UI Flowは完成ではないので変更する可能性があります
+https://app.diagrams.net/#G1kq5fIe6nIibMN58V6lHCNayUoTMb87en
 
 ## チャレンジ要素一覧
 https://docs.google.com/spreadsheets/d/1Y_CjQedii-4rEifAW4HYgus5wJEIwQtyZY0K0JPwuEE/edit#gid=0
