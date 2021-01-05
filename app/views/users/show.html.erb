@@ -1,0 +1,14 @@
+<h1>マイページ</h1>
+
+<h3>ユーザー名</h3>
+<h4><%= @user.name %></h4>
+<h3>投稿一覧</h3>
+<% @images.each do |image| %>
+ <!--投稿画像-->
+ <%= link_to hobby_image_path(image.id) do %>
+  <%= attachment_image_tag image, :image, size: "150x150", format: 'jpg', fallback: "no_image.jpg" %>
+ <% end %>
+ <!--コメント数-->
+<%= "#{image.image_comments.count} コメント" %>
+<% end %>
+
