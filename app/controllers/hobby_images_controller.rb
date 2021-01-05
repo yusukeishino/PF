@@ -7,8 +7,12 @@ class HobbyImagesController < ApplicationController
   def create
     @image = HobbyImage.new(hobby_image_params)
     @image.user_id = current_user.id
-    @image.save
-    redirect_to hobby_images_path
+    if @image.save
+     redirect_to hobby_images_path
+    else
+     @image = HobbyImage.new
+     render :new
+    end
   end
 
   def index

@@ -10,4 +10,6 @@ class User < ApplicationRecord
 
   attachment :user_image
 
+  validates :name, presence: true
+
 end
