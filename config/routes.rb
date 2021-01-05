@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get 'users/show'
   devise_for :users
   root to: "homes#top"
   resources :users
@@ -7,5 +6,9 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :image_comments, only: [:create, :destroy]
   end
+
+  # フォロー/フォロワーのルーティング
+  post 'follow/:id' => 'relationships#follow', as: 'follow'
+  post 'unfollow/:id' => 'relationships#unfollow', as: 'unfollow'
 
 end
