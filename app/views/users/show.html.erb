@@ -7,9 +7,10 @@
 <h3><%= @user.body %></h3>
 
 <!--フォロー/フォロワー-->
-<p><%= "フォロー数: #{@user.follower_count}" %></p>
-<p><%= "フォロワー数: #{@user.followed.count}" %></p>
-<% unless @user == current_user %>
+<p>フォロー数:<%= @user.follower_count %></p>
+<p>フォロワー数:<%= @user.followed_count %></p>
+<!--@user == current_userはmodelに定義-->
+<% unless @user.current_user?(current_user) %>
   <% if current_user.following?(@user) %>
     <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
   <% else %>
@@ -27,6 +28,6 @@
   <%= attachment_image_tag image, :image, size: "150x150", format: 'jpg', fallback: "no_image.jpg" %>
  <% end %>
  <!--コメント数-->
-<%= "#{image.image_comments.count} コメント" %>
+<p><%= image.image_comments.count %>コメント</p>
 <% end %>
 

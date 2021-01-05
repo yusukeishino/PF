@@ -33,9 +33,13 @@ class User < ApplicationRecord
   following_user.include?(user)
  end
 
- #以下2つ、メソッド化の例
+ #以下、メソッド化の例
  def follower_count
   follower.count
+ end
+
+ def followed_count
+  followed.count
  end
 
  def current_user?(current_user)
