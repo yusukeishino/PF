@@ -7,7 +7,8 @@
 
 <h2>プロフィール編集</h2>
 <%= form_with model:@user, local:true do |f| %>
- <%= attachment_image_tag @user, :user_image, size: "150x150" %>
+ <%= attachment_image_tag @user, :user_image, fallback: "no_image.jpg", id: "img_prev", size: "150x150" %>
+ <%#= attachment_image_tag @user, :user_image, size: "150x150" %>
  <label for="inputImage">プロフィール画像</label>
  <%= f.attachment_field :user_image, placeholder: "プロフィール画像" %>
  <label for="inputName">Name</label>
@@ -16,3 +17,22 @@
  <%= f.text_area :body, autofocus: true, id:"inputBody", placeholder:"自己紹介"%>
  <%= f.submit "変更を保存" %>
 <% end %>
+
+<!--画像プレビューのためのjs-->
+<script>
+$(document).on("turbolinks:load", function(){
+  function readURL(input) {
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('#img_prev').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $('#user_user_image').change(function(){
+    readURL(this);
+  });
+});
+</script>
+
