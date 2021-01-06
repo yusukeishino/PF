@@ -32,6 +32,14 @@
       <li class="nav-item">
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
+      <li>
+       <%= form_with url: search_search_path, method: :get, local: true do |f| %>
+        <%= f.text_field :content %>
+        <%= f.select :model, [["User", "User"],["keyword","HobbyImage"]], include_blank: "選択して下さい" %>
+        <%= f.select :how, [["完全一致", "match"],["部分一致", "partical"]],include_blank: "選択して下さい" %>
+        <%= f.submit :search %>
+       <% end %>
+      </li>
      <% else %>
      <!--ログイン前-->
       <li class="nav-item">
