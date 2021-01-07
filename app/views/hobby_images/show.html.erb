@@ -1,43 +1,54 @@
 <h1>投稿詳細</h1>
-<!--投稿者名-->
-<%= @image.user.name %>
-<!--投稿画像-->
-<%= attachment_image_tag @image, :image, size: "150x150", format: 'jpg', fallback: "no_image.jpg" %>
-<!--画像説明-->
-<%= @image.body %>
-<!--いいね機能-->
-<% if @image.favorited_by?(current_user) %>
- <p>
-  <%= link_to hobby_image_favorites_path(@image), method: :delete do %>
-   ♥<%= @image.favorites.count %> いいね
-  <% end %>
- </p>
-<% else %>
- <p>
-  <%= link_to hobby_image_favorites_path(@image), method: :post do %>
-   ♡<%= @image.favorites.count %> いいね
-  <% end %>
- </p>
-<% end %>
-
-<!--コメント-->
-<div class="comments">
-<p>コメント件数：<%= @image.image_comments.count %></p>
-<% @image.image_comments.each do |image_comment| %>
- <%= image_comment.user.name %>
- <%= image_comment.created_at.strftime('%Y/%m/%d') %><%= image_comment.comment %>
- <!--コメント削除欄-->
- <% if image_comment.user == current_user %>
-  <div class="comment-delete">
-   <%= link_to "削除", hobby_image_image_comment_path(image_comment.hobby_image, image_comment), method: :delete %>
+<div class="container">
+ <div class="row">
+  <div class="col-sm-7">
+   <!--投稿画像-->
+   <%= attachment_image_tag @image, :image, size: "600x600", format: 'jpg', fallback: "no_image.jpg" %>
   </div>
- <% end %>
-<% end %>
-</div>
-<!--コメント入力欄-->
-<div class="new-comment">
-<%= form_with(model:[@image, @image_comment], local: true) do |f| %>
-  <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
-  <%= f.submit "送信する" %>
-<% end %>
+   <div class="col-sm-5">
+    <!--プロフィール画像-->
+    <%= attachment_image_tag @image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
+    <!--投稿者名-->
+    <%= link_to user_path(@image.user) do %>
+     <%= @image.user.name %><br>
+    <% end %>
+    <!--画像説明-->
+    <%= @image.body %>
+    <!--いいね機能-->
+    <% if @image.favorited_by?(current_user) %>
+     <p>
+      <%= link_to hobby_image_favorites_path(@image), method: :delete do %>
+       ♥<%= @image.favorites.count %> いいね
+      <% end %>
+     </p>
+    <% else %>
+     <p>
+      <%= link_to hobby_image_favorites_path(@image), method: :post do %>
+       ♡<%= @image.favorites.count %> いいね
+      <% end %>
+     </p>
+    <% end %>
+    <!--コメント-->
+    <div class="comments">
+    <p>コメント件数：<%= @image.image_comments.count %></p>
+    <% @image.image_comments.each do |image_comment| %>
+     <%= image_comment.user.name %>
+     <%= image_comment.created_at.strftime('%Y/%m/%d') %><%= image_comment.comment %>
+     <!--コメント削除欄-->
+     <% if image_comment.user == current_user %>
+      <div class="comment-delete">
+       <%= link_to "削除", hobby_image_image_comment_path(image_comment.hobby_image, image_comment), method: :delete %>
+      </div>
+     <% end %>
+    <% end %>
+    </div>
+    <!--コメント入力欄-->
+    <div class="new-comment">
+    <%= form_with(model:[@image, @image_comment], local: true) do |f| %>
+      <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+      <%= f.submit "送信する" %>
+    <% end %>
+   </div>
+  </div>
+ </div>
 </div>
