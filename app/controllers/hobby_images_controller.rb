@@ -25,6 +25,9 @@ class HobbyImagesController < ApplicationController
   end
 
   def destroy
+    @image = HobbyImage.find(params[:id])
+    @image.destroy
+    redirect_to user_path(current_user.id)
   end
 
   private
