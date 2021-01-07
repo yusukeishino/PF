@@ -15,19 +15,11 @@
     <!--画像説明-->
     <%= @image.body %>
     <!--いいね機能-->
-    <% if @image.favorited_by?(current_user) %>
-     <p>
-      <%= link_to hobby_image_favorites_path(@image), method: :delete do %>
-       ♥<%= @image.favorites.count %> いいね
-      <% end %>
-     </p>
-    <% else %>
-     <p>
-      <%= link_to hobby_image_favorites_path(@image), method: :post do %>
-       ♡<%= @image.favorites.count %> いいね
-      <% end %>
-     </p>
-    <% end %>
+    <div id="likes_buttons_<%= @image.id %>">
+     <%= render 'favorites/favorites', image: @image %>
+    </div>
+
+
     <!--コメント-->
     <div class="comments">
     <p>コメント件数：<%= @image.image_comments.count %></p>
