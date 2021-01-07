@@ -10,60 +10,66 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <!--ヘッダー部分-->
-  <body class="container">
-    <div class="row col-md-8">
+<!--ヘッダー部分-->
+<body class="container">
+   <div class="row">
     <nav>
-     <!--ロゴ-->
-     <p></p><div class="logp"><%= image_tag 'hg-logo.png', size: "60x60" %>Hobby Graph</div></p>
-     <!--nav-->
-     <ul class="nav float-right">
-      <% if user_signed_in? %>
-      <!--ログイン後-->
-      <li class="nav-item">
+     <div class="col-sm-4">
+      <!--ロゴ-->
+      <%= link_to root_path do %>
+       <p></p><div class="logp"><%= image_tag 'hg-logo.png', size: "60x60" %>Hobby Graph</div></p>
+      <% end %>
+     </div>
+     <div class="col-sm-8">
+      <!--nav-->
+      <ul class="nav float-right">
+       <% if user_signed_in? %>
+       <!--ログイン後-->
+       <li class="nav-item">
         <%= link_to "マイページ", user_path(current_user.id) %>
-      </li>
-      <li class="nav-item">
+       </li>
+       <li class="nav-item">
         <%= link_to "新規投稿", new_hobby_image_path %>
-      </li>
-      <li class="nav-item">
+       </li>
+       <li class="nav-item">
         <%= link_to "投稿一覧", hobby_images_path %>
-      </li>
-      <li class="nav-item">
+       </li>
+       <li class="nav-item">
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-      <li>
-       <!--検索ウィンドウ-->
-       <%= form_with url: search_search_path, method: :get, local: true do |f| %>
-        <%= f.text_field :content %>
-        <%= f.select :model, [["User", "User"],["keyword","HobbyImage"]], include_blank: "選択して下さい" %>
-        <%= f.select :how, [["完全一致", "match"],["部分一致", "partical"]],include_blank: "選択して下さい" %>
-        <%= f.submit :search %>
-       <% end %>
-      </li>
-     <% else %>
-     <!--ログイン前-->
-      <li class="nav-item">
+       </li>
+       <li>
+        <!--検索ウィンドウ-->
+        <%= form_with url: search_search_path, method: :get, local: true do |f| %>
+         <%= f.text_field :content %>
+         <%= f.select :model, [["User", "User"],["keyword","HobbyImage"]], include_blank: "選択して下さい" %>
+         <%= f.select :how, [["完全一致", "match"],["部分一致", "partical"]],include_blank: "選択して下さい" %>
+         <%= f.submit :search %>
+        <% end %>
+       </li>
+       <% else %>
+       <!--ログイン前-->
+       <li class="nav-item">
         <%= link_to "投稿一覧", hobby_images_path %>
-      </li>
-      <li class="nav-item">
+       </li>
+       <li class="nav-item">
         <%= link_to "新規登録", new_user_registration_path %>
-      </li>
-      <li class="nav-item">
+       </li>
+       <li class="nav-item">
         <%= link_to "ログイン", new_user_session_path %>
-      </li>
-      <li>
-       <!--検索ウィンドウ-->
-       <%= form_with url: search_search_path, method: :get, local: true do |f| %>
-        <%= f.text_field :content %>
-        <%= f.select :model, [["User", "User"],["keyword","HobbyImage"]], include_blank: "選択して下さい" %>
-        <%= f.select :how, [["完全一致", "match"],["部分一致", "partical"]],include_blank: "選択して下さい" %>
-        <%= f.submit :search %>
+       </li>
+       <li>
+        <!--検索ウィンドウ-->
+        <%= form_with url: search_search_path, method: :get, local: true do |f| %>
+         <%= f.text_field :content %>
+         <%= f.select :model, [["User", "User"],["keyword","HobbyImage"]], include_blank: "選択して下さい" %>
+         <%= f.select :how, [["完全一致", "match"],["部分一致", "partical"]],include_blank: "選択して下さい" %>
+         <%= f.submit :search %>
+        <% end %>
+       </li>
        <% end %>
-      </li>
-     </ul>
-     <% end %>
+      </ul>
     </nav>
+    </div>
     </div>
     <%= yield %>
   </body>
