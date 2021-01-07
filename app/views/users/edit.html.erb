@@ -6,17 +6,27 @@
 <% end %>
 
 <h2>プロフィール編集</h2>
-<%= form_with model:@user, local:true do |f| %>
- <%= attachment_image_tag @user, :user_image, fallback: "no_image.jpg", id: "img_prev", size: "150x150" %>
- <%#= attachment_image_tag @user, :user_image, size: "150x150" %>
- <label for="inputImage">プロフィール画像</label>
- <%= f.attachment_field :user_image, placeholder: "プロフィール画像" %>
- <label for="inputName">Name</label>
- <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
- <label for="inputBody">introduction</label>
- <%= f.text_area :body, autofocus: true, id:"inputBody", placeholder:"自己紹介"%>
- <%= f.submit "変更を保存" %>
-<% end %>
+<div class="container">
+ <div class="row">
+  <div class="col-sm-5">
+   <%= form_with model:@user, local:true do |f| %>
+   <!--画像プレビュー-->
+   <%= attachment_image_tag @user, :user_image, fallback: "no_image.jpg", id: "img_prev", size: "150x150" %>
+   <label for="inputImage">プロフィール画像</label>
+   <%= f.attachment_field :user_image, placeholder: "プロフィール画像" %>
+  </div>
+  <div class="col-sm-7">
+    <!--ユーザーネーム入力-->
+    <table>
+     <tr><th><label for="inputName">Name</label></th><td><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%></td></tr>
+     <tr><th><label for="inputBody">introduction</label></th><td><%= f.text_area :body, autofocus: true, id:"inputBody", placeholder:"自己紹介"%></td></tr>
+    </table>
+   <%= f.submit "変更を保存" %>
+   <% end %>
+  </div>
+ </div>
+</div>
+
 
 <!--画像プレビューのためのjs-->
 <script>
