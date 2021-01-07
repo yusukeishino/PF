@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @images = @user.hobby_images
+    @images = @user.hobby_images.reverse_order
   end
 
   def edit
@@ -17,6 +17,7 @@ class UsersController < ApplicationController
      render :edit
    end
   end
+
 
   private
 
