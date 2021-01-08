@@ -17,6 +17,7 @@ class HobbyImagesController < ApplicationController
 
   def index
     @images = HobbyImage.all
+    @all_ranks = HobbyImage.find(Favorite.group(:hobby_image_id).order('count(hobby_image_id) desc').limit(3).pluck(:hobby_image_id))
   end
 
   def show
