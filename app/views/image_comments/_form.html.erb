@@ -1,0 +1,9 @@
+<!--コメント入力欄-->
+ <div class="new-comment">
+  <%= form_with model:[image, image_comment] do |f| %>
+   <%= f.text_area :comment, rows:'5',placeholder: "コメントをここに" %>
+   <%= f.submit "送信する" %>
+  <% end %>
+ </div>
+
+

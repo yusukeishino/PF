@@ -1,0 +1,12 @@
+<!--コメント-->
+<% image.image_comments.each do |image_comment| %>
+  <%= image_comment.user.name %>
+ <%= image_comment.created_at.strftime('%Y/%m/%d') %><%= image_comment.comment %>
+ <!--コメント削除欄-->
+ <% if image_comment.user == current_user %>
+  <div class="comment-delete">
+   <%= link_to "削除", hobby_image_image_comment_path(image_comment.hobby_image, image_comment), method: :delete, remote: true %>
+  </div>
+ <% end %>
+<% end %>
+
