@@ -28,8 +28,9 @@
   </div>
   <div class="col-sm-5">
    <h2>いいね数ランキング</h2>
-   <% @all_ranks.each do |image| %>
-   <!--プロフィール画像-->
+   <% @all_ranks.each.with_index(1) do |image,i| %>
+    <p><%= i %>位</p>
+    <!--プロフィール画像-->
      <%= attachment_image_tag image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
      <!--投稿者名-->
      <%= link_to user_path(image.user) do %>
