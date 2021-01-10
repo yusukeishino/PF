@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   get 'search/search'
   devise_for :users
   root to: "homes#top"
@@ -7,6 +9,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
     resources :image_comments, only: [:create, :destroy]
   end
+  resources :inquirys, only: [:new, :create]
 
   # フォロー/フォロワーのルーティング
   post 'follow/:id' => 'relationships#follow', as: 'follow'

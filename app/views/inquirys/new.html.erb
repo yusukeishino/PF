@@ -1,0 +1,9 @@
+<h1>問い合わせフォーム</h1>
+
+<%= form_with model:@inquiry, url: inquirys_path, local:true do |f| %>
+ <h4>お名前</h4>
+ <%= f.text_field :name %>
+ <h4>問い合わせ内容</h4>
+ <%= f.text_area :message %>
+ <%= f.submit "送信" %>
+<% end %>

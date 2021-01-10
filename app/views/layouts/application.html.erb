@@ -37,6 +37,9 @@
        <li class="nav-item">
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
        </li>
+       <li class="nav-item">
+        <%= link_to "お問い合わせ", new_inquiry_path %>
+       </li>
        <li>
         <!--検索ウィンドウ-->
         <%= form_with url: search_search_path, method: :get, local: true do |f| %>
