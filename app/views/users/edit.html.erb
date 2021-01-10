@@ -7,9 +7,9 @@
 
 <h2>プロフィール編集</h2>
 <div class="container">
+  <%= form_with model:@user, local:true do |f| %>
  <div class="row">
   <div class="col-sm-5">
-   <%= form_with model:@user, local:true do |f| %>
    <!--画像プレビュー-->
    <%= attachment_image_tag @user, :user_image, fallback: "no_image.jpg", id: "img_prev", size: "150x150" %>
    <label for="inputImage">プロフィール画像</label>
@@ -22,9 +22,9 @@
      <tr><th><label for="inputBody">introduction</label></th><td><%= f.text_area :body, autofocus: true, id:"inputBody", placeholder:"自己紹介"%></td></tr>
     </table>
    <%= f.submit "変更を保存" %>
-   <% end %>
   </div>
  </div>
+ <% end %>
 </div>
 
 
