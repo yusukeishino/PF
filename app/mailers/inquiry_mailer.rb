@@ -4,7 +4,7 @@ class InquiryMailer < ApplicationMailer
     @inquiry = inquiry
     mail(
       from: 'system@example.com',
-      to:   'yskgori0407@gmail.com',
+      to:   ENV['GMAIL_ADDRESS'],
       subject: 'お問い合わせ通知'
     )
   end

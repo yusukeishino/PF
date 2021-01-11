@@ -8,9 +8,14 @@
    <h3><%= @user.name %></h3>
    <!--自己紹介-->
    <h5><%= @user.body %></h5>
-   <!--フォロー/フォロワー-->
-   <p>フォロー数:<%= @user.follower_count %></p>
-   <p>フォロワー数:<%= @user.followed_count %></p>
+   <!--フォロー-->
+   <%= link_to following_path(id: @user.id) do %>
+    <p>フォロー数:<%= @user.follower_count %></p>
+   <% end %>
+   <!--フォロワー-->
+   <%= link_to followed_path(id: @user.id) do %>
+    <p>フォロワー数:<%= @user.followed_count %></p>
+   <% end %>
    <!--@user == current_userはmodelに定義-->
    <% unless @user.current_user?(current_user) %>
     <% if current_user.following?(@user) %>

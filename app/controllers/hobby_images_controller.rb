@@ -31,6 +31,7 @@ class HobbyImagesController < ApplicationController
     redirect_to user_path(current_user.id)
   end
 
+
   private
 
   def hobby_image_params
