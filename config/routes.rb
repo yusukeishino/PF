@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'search/search'
+  get 'following' => 'users#following'
+  get 'followed' => 'users#followed'
   devise_for :users
   root to: "homes#top"
   resources :users

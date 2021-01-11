@@ -1,0 +1,16 @@
+<h2>フォロー</h2>
+
+<% if @users.size  == 0 %>
+  <p><%= "ユーザーはいません" %></p>
+<% else %>
+ <% @users.each do |user| %>
+  <!--フォローユーザー画像-->
+  <%= attachment_image_tag user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
+  <!--フォロー名-->
+  <%= link_to user_path(user) do %>
+   <%= user.name %>
+  <% end %>
+ <% end %>
+<% end %>
+
+
