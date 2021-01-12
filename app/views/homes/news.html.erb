@@ -1,0 +1,9 @@
+<h1>News</h1>
+<% @elements.each do|element| %>
+ <ul>
+  <li>
+    <!--.inner_textでテキスト部分を、element[:href]で属性を持ってくる。今回はaタグ。-->
+    <%= link_to element.inner_text, element[:href] %>
+  </li>
+ </ul>
+<%end%>
