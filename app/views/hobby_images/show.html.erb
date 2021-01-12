@@ -10,7 +10,7 @@
    <%= attachment_image_tag @image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
    <!--投稿者名-->
    <%= link_to user_path(@image.user) do %>
-    <%= @image.user.name %><br>
+    <p><%= @image.user.name %></p>
    <% end %>
    <!--画像説明-->
    <%= @image.body %>

@@ -9,7 +9,7 @@
      <%= attachment_image_tag image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
      <!--投稿者名-->
      <%= link_to user_path(image.user) do %>
-      <%= image.user.name %>
+      <p><%= image.user.name %></p>
      <% end %>
      <!--投稿画像-->
      <%= link_to hobby_image_path(image.id) do %>
@@ -34,7 +34,7 @@
      <%= attachment_image_tag image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
      <!--投稿者名-->
      <%= link_to user_path(image.user) do %>
-      <%= image.user.name %>
+      <p><%= image.user.name %></p>
      <% end %>
      <!--投稿画像-->
      <%= link_to hobby_image_path( image.id) do %>

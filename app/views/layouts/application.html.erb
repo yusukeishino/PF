@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hobby Graph</title>
+    <title class="title">Hobby Graph</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,8 +11,9 @@
   </head>
 
 <!--ヘッダー部分-->
-<body>
- <nav class="bg-light">
+
+<header>
+ <nav>
   <div class="container">
    <div class="row ">
      <div class="col-sm-4">
@@ -26,6 +27,9 @@
       <ul class="nav float-right">
        <% if user_signed_in? %>
        <!--ログイン後-->
+       <li class="nav-item">
+        <%=link_to "News", news_path %>
+       </li>
        <li class="nav-item">
         <%= link_to "マイページ", user_path(current_user.id) %>
        </li>
@@ -53,6 +57,9 @@
        <% else %>
        <!--ログイン前-->
        <li class="nav-item">
+        <%=link_to "News", news_path %>
+       </li>
+       <li class="nav-item">
         <%= link_to "投稿一覧", hobby_images_path %>
        </li>
        <li class="nav-item">
@@ -76,6 +83,9 @@
    </div>
   </div>
  </nav>
+</header>
+<body>
+
  <%= yield %>
 </body>
 </html>
