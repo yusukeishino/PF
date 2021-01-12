@@ -5,6 +5,8 @@
   <% end %>
 <% end %>
 
+<div class="container">
+
 <h1>画像を投稿</h1>
 <%= attachment_image_tag @image, :image, fallback: "no_image.jpg", id: "img_prev", size: "150x150" %>
 <%= form_with model: @image, local:true do |f| %>
@@ -14,6 +16,8 @@
  <%= f.text_area :body %>
  <%= f.submit '投稿' %>
 <% end %>
+
+</div>
 
 <!--画像プレビューのためのjs-->
 <script>
