@@ -1,11 +1,16 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
+  devise_for :users
   ActiveAdmin.routes(self)
-  get 'search/search'
+
+
+  root to: "homes#top"
+  get 'news' => 'homes#news'
   get 'following' => 'users#following'
   get 'followed' => 'users#followed'
-  devise_for :users
-  root to: "homes#top"
+  get 'search/search'
+
+
   resources :users
   resources :hobby_images, only: [:new, :create, :index, :show, :destroy] do
     resource :favorites, only: [:create, :destroy]
