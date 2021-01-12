@@ -4,8 +4,10 @@
 <% @elements.each do|element| %>
  <ul>
   <li>
-    <!--.inner_textでテキスト部分を、element[:href]で属性を持ってくる。今回はaタグ。-->
-    <%= link_to element.inner_text, element[:href] %>
+    <!--.inner_textでテキスト部分を、attributesでを持ってくる。-->
+    <%= link_to element.children.inner_text, element.attributes['href'].value %>
+    <%#= element.attributes['href'].value %>
+    <%#= element.children.inner_text.inspect %>
   </li>
  </ul>
 <%end%>
