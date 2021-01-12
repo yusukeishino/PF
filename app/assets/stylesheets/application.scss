@@ -17,7 +17,11 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+@import url('https://fonts.googleapis.com/css2?family=Yusei+Magic&display=swap');
 
+p, h1, h2, h3, h4, h5, header, li{
+  font-family: 'Yusei Magic', sans-serif;
+}
 
 nav{
   font-size: 20px;
@@ -43,3 +47,4 @@ header{
 .nav-item{
   font-size: 19px;
 }
+
