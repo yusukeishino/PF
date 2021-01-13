@@ -23,6 +23,11 @@
      </div>
      <!--画像説明-->
      <%= image.body.truncate(20) %>
+     <% if image.body.size >= 20 %>
+      <%= link_to hobby_image_path(image.id) do %>
+       <p>続きを読む</p>
+      <% end %>
+     <% end %>
      </div>
     </div>
    <% end %>
