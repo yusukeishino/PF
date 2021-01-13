@@ -1,10 +1,9 @@
-
 <div class="container">
  <div class="row">
   <div class="col-sm-7">
    <h2>投稿一覧</h2>
    <% @images.each do |image| %>
-    <div class="card mt-4">
+    <div class="card mx-auto mt-4 shadow-lg ">
      <!--プロフィール画像-->
      <%= attachment_image_tag image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
      <!--投稿者名-->
@@ -17,11 +16,18 @@
      <% end %>
      <div class="card-body">
      <p class="card-text">
-     <!--画像説明-->
-     <%= image.body %>
      </p>
-     <!--コメント数-->
-     <p><%= image.image_comments.count %>コメント</p>
+     <!--いいね機能-->
+     <div id="likes_buttons_<%= image.id %>">
+      <%= render 'favorites/favorites', image: image %>
+     </div>
+     <!--画像説明-->
+     <%= image.body.truncate(20) %>
+     <% if image.body.size >= 20 %>
+      <%= link_to hobby_image_path(image.id) do %>
+       <p>続きを読む</p>
+      <% end %>
+     <% end %>
      </div>
     </div>
    <% end %>
@@ -29,6 +35,7 @@
   <div class="col-sm-5">
    <h2>いいね数ランキング</h2>
    <% @all_ranks.each.with_index(1) do |image,i| %>
+   <div class="card mx-auto mt-4 shadow-lg">
     <p><%= i %>位</p>
     <!--プロフィール画像-->
      <%= attachment_image_tag image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
@@ -41,7 +48,9 @@
       <%= attachment_image_tag image, :image, size: "400x400", format: 'jpg', fallback: "no_image.jpg" %>
      <% end %>
      <p>♥<%= image.favorites.count %> いいね</p>
+     </div>
    <% end %>
   </div>
  </div>
 </div>
+
