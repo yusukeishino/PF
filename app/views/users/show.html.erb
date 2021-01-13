@@ -33,7 +33,7 @@
    <h3>投稿一覧</h3>
    <div class="images">
    <% @images.each do |image| %>
-    <div class="card mt-2 mr-2">
+    <div class="card mt-2 mr-2 ">
      <!--投稿画像-->
      <%= link_to hobby_image_path(image.id) do %>
       <%= attachment_image_tag image, :image, size: "150x150", format: 'jpg', fallback: "no_image.jpg" %>
