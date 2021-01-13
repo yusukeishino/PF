@@ -1,15 +1,11 @@
 <div class="container">
-
 <h1>News</h1><h5>(電撃ホビーWebへ飛びます)</h5>
 <% @elements.each do|element| %>
  <ul>
   <li>
-    <!--.inner_textでテキスト部分を、attributesでを持ってくる。-->
+    <!--.inner_textでテキスト部分を、attributesでurlを持ってくる。-->
     <%= link_to element.children.inner_text, element.attributes['href'].value %>
-    <%#= element.attributes['href'].value %>
-    <%#= element.children.inner_text.inspect %>
   </li>
  </ul>
 <%end%>
-
 </div>
