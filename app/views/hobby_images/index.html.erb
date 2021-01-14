@@ -11,9 +11,13 @@
       <p><%= image.user.name %></p>
      <% end %>
      <!--投稿画像-->
+     <div>
+      <% image.images.each do |image| %>
      <%= link_to hobby_image_path(image.id) do %>
-      <%= attachment_image_tag image, :image, size: "500x500", format: 'jpg', fallback: "no_image.jpg" %>
+      <%= attachment_image_tag image, :hobby, size: "500x500", format: 'jpg', fallback: "no_image.jpg" %>
      <% end %>
+     <% end %>
+     </div>
      <div class="card-body">
      <p class="card-text">
      </p>
@@ -44,8 +48,10 @@
       <p><%= image.user.name %></p>
      <% end %>
      <!--投稿画像-->
-     <%= link_to hobby_image_path( image.id) do %>
-      <%= attachment_image_tag image, :image, size: "400x400", format: 'jpg', fallback: "no_image.jpg" %>
+     <% image.images.each do |image| %>
+      <%= link_to hobby_image_path( image.id) do %>
+       <%= attachment_image_tag image, :hobby, size: "400x400", format: 'jpg', fallback: "no_image.jpg" %>
+      <% end %>
      <% end %>
      <p>♥<%= image.favorites.count %> いいね</p>
      </div>

@@ -35,9 +35,13 @@
    <% @images.each do |image| %>
     <div class="card mt-2 mr-2 ">
      <!--投稿画像-->
+     <div>
+      <% image.images.each do |image| %>
      <%= link_to hobby_image_path(image.id) do %>
-      <%= attachment_image_tag image, :image, size: "150x150", format: 'jpg', fallback: "no_image.jpg" %>
+      <%= attachment_image_tag image, :hobby, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
      <% end %>
+     <% end %>
+     </div>
      <div class="card-comment">
       <!--コメント数-->
       <p><%= image.image_comments.count %>コメント</p>
