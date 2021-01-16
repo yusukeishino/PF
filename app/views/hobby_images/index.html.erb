@@ -2,33 +2,35 @@
  <div class="row">
   <div class="col-sm-7">
    <h2>投稿一覧</h2>
-   <% @images.each do |image| %>
+   <% @images.each do |hobby_image| %>
     <div class="card mx-auto mt-4 shadow-lg ">
      <!--プロフィール画像-->
-     <%= attachment_image_tag image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
+     <%= attachment_image_tag hobby_image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
      <!--投稿者名-->
-     <%= link_to user_path(image.user) do %>
-      <p><%= image.user.name %></p>
+     <%= link_to user_path(hobby_image.user) do %>
+      <p><%= hobby_image.user.name %></p>
      <% end %>
      <!--投稿画像-->
-     <div>
-      <% image.images.each do |image| %>
-     <%= link_to hobby_image_path(image.id) do %>
-      <%= attachment_image_tag image, :hobby, size: "500x500", format: 'jpg', fallback: "no_image.jpg" %>
-     <% end %>
-     <% end %>
-     </div>
+     <div id="container">
+      <div class="image-index">
+       <% hobby_image.images.each do |image| %>
+        <%= link_to hobby_image_path(hobby_image.id) do %>
+         <%= attachment_image_tag image, :hobby, size: "500x500" %>
+        <% end %>
+       <% end %>
+      </div>
+      </div>
      <div class="card-body">
      <p class="card-text">
      </p>
      <!--いいね機能-->
-     <div id="likes_buttons_<%= image.id %>">
-      <%= render 'favorites/favorites', image: image %>
+     <div id="likes_buttons_<%= hobby_image.id %>">
+      <%= render 'favorites/favorites', image: hobby_image %>
      </div>
      <!--画像説明-->
-     <%= image.body.truncate(20) %>
-     <% if image.body.size >= 20 %>
-      <%= link_to hobby_image_path(image.id) do %>
+     <%= hobby_image.body.truncate(20) %>
+     <% if hobby_image.body.size >= 20 %>
+      <%= link_to hobby_image_path(hobby_image.id) do %>
        <p>続きを読む</p>
       <% end %>
      <% end %>
@@ -59,4 +61,5 @@
   </div>
  </div>
 </div>
+
 

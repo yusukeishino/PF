@@ -9,10 +9,10 @@
 
 <h1>画像を投稿</h1>
 <!--画像プレビュー部分-->
-<%#= attachment_image_tag @image, :image, fallback: "no_image.jpg", id: "img_prev", size: "150x150" %>
+<%#= attachment_image_tag @image, :hobby, fallback: "no_image.jpg", id: "img_prev", size: "150x150" %>
 <%= form_with model: @image, local:true do |f| %>
  <h4>画像</h4>
-　<!--has_many = imagesモデルの中の複数のhobbiesという意味-->
+　<!--has_many = imagesモデルの中の複数のhobbyを投稿するという意味-->
  <%= f.attachment_field :images_hobbies, multiple: true %>
  <h4>説明</h4>
  <%= f.text_area :body %>
