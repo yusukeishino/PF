@@ -2,30 +2,37 @@
 <h1>投稿詳細</h1>
  <div class="row">
   <div class="col-sm-7">
-   <!--投稿画像-->
-   <%= attachment_image_tag @image, :image, size: "600x600", format: 'jpg', fallback: "no_image.jpg" %>
+  <!--投稿画像-->
+  <div id="container">
+   <div class="image-index">
+   <% @hobby_image.images.each do |image| %>
+     <%= attachment_image_tag image, :hobby, size: "500x500" %>
+   <% end %>
+   </div>
+  </div>
   </div>
   <div class="col-sm-5">
    <!--プロフィール画像-->
-   <%= attachment_image_tag @image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
+   <%= attachment_image_tag @hobby_image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
    <!--投稿者名-->
-   <%= link_to user_path(@image.user) do %>
-    <p><%= @image.user.name %></p>
+   <%= link_to user_path(@hobby_image.user) do %>
+    <p><%= @hobby_image.user.name %></p>
    <% end %>
    <!--画像説明-->
-   <%= @image.body %>
+   <%= @hobby_image.body %>
    <!--いいね機能-->
-   <div id="likes_buttons_<%= @image.id %>">
-    <%= render 'favorites/favorites', image: @image %>
+   <div id="likes_buttons_<%= @hobby_image.id %>">
+    <%= render 'favorites/favorites', image: @hobby_image %>
    </div>
    <!--コメント-->
    <div>
-    <p id="iamge">コメント件数：<%= @image.image_comments.count %></p>
+    <p id="iamge">コメント件数：<%= @hobby_image.image_comments.count %></p>
     <div id="comments_area">
-     <%= render 'image_comments/index', image: @image %>
+     <%= render 'image_comments/index', image: @hobby_image %>
     </div>
-    <%= render 'image_comments/form', image: @image, image_comment: @image_comment %>
+    <%= render 'image_comments/form', image: @hobby_image, image_comment: @image_comment %>
    </div>
   </div>
  </div>
 </div>
+

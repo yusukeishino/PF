@@ -1,27 +1,39 @@
-
 <div class="container">
  <div class="row">
   <div class="col-sm-7">
    <h2>投稿一覧</h2>
-   <% @images.each do |image| %>
-    <div class="card mt-4">
+   <% @images.each do |hobby_image| %>
+    <div class="card mx-auto mt-4 shadow-lg ">
      <!--プロフィール画像-->
-     <%= attachment_image_tag image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
+     <%= attachment_image_tag hobby_image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
      <!--投稿者名-->
-     <%= link_to user_path(image.user) do %>
-      <p><%= image.user.name %></p>
+     <%= link_to user_path(hobby_image.user) do %>
+      <p><%= hobby_image.user.name %></p>
      <% end %>
      <!--投稿画像-->
-     <%= link_to hobby_image_path(image.id) do %>
-      <%= attachment_image_tag image, :image, size: "500x500", format: 'jpg', fallback: "no_image.jpg" %>
-     <% end %>
+     <div id="container">
+      <div class="image-index">
+       <% hobby_image.images.each do |image| %>
+        <%= link_to hobby_image_path(hobby_image.id) do %>
+         <%= attachment_image_tag image, :hobby, size: "500x500" %>
+        <% end %>
+       <% end %>
+      </div>
+      </div>
      <div class="card-body">
      <p class="card-text">
-     <!--画像説明-->
-     <%= image.body %>
      </p>
-     <!--コメント数-->
-     <p><%= image.image_comments.count %>コメント</p>
+     <!--いいね機能-->
+     <div id="likes_buttons_<%= hobby_image.id %>">
+      <%= render 'favorites/favorites', image: hobby_image %>
+     </div>
+     <!--画像説明-->
+     <%= hobby_image.body.truncate(20) %>
+     <% if hobby_image.body.size >= 20 %>
+      <%= link_to hobby_image_path(hobby_image.id) do %>
+       <p>続きを読む</p>
+      <% end %>
+     <% end %>
      </div>
     </div>
    <% end %>
@@ -29,6 +41,7 @@
   <div class="col-sm-5">
    <h2>いいね数ランキング</h2>
    <% @all_ranks.each.with_index(1) do |image,i| %>
+   <div class="card mx-auto mt-4 shadow-lg">
     <p><%= i %>位</p>
     <!--プロフィール画像-->
      <%= attachment_image_tag image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
@@ -37,11 +50,16 @@
       <p><%= image.user.name %></p>
      <% end %>
      <!--投稿画像-->
-     <%= link_to hobby_image_path( image.id) do %>
-      <%= attachment_image_tag image, :image, size: "400x400", format: 'jpg', fallback: "no_image.jpg" %>
+     <% image.images.each do |image| %>
+      <%= link_to hobby_image_path( image.id) do %>
+       <%= attachment_image_tag image, :hobby, size: "400x400", format: 'jpg', fallback: "no_image.jpg" %>
+      <% end %>
      <% end %>
      <p>♥<%= image.favorites.count %> いいね</p>
+     </div>
    <% end %>
   </div>
  </div>
 </div>
+
+

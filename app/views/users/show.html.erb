@@ -32,18 +32,22 @@
    <div class="col-sm-8">
    <h3>投稿一覧</h3>
    <div class="images">
-   <% @images.each do |image| %>
-    <div class="card mt-2 mr-2">
+   <% @hobby_images.each do |hobby_image| %>
+    <div class="card mt-2 mr-2 ">
      <!--投稿画像-->
-     <%= link_to hobby_image_path(image.id) do %>
-      <%= attachment_image_tag image, :image, size: "150x150", format: 'jpg', fallback: "no_image.jpg" %>
-     <% end %>
+     <div>
+      <% hobby_image.images.first(1).each do |image| %>
+       <%= link_to hobby_image_path(hobby_image.id) do %>
+        <%= attachment_image_tag image, :hobby, size: "100x100", format: 'jpg', fallback: "no_image.jpg" %>
+       <% end %>
+      <% end %>
+     </div>
      <div class="card-comment">
       <!--コメント数-->
-      <p><%= image.image_comments.count %>コメント</p>
+      <p><%= hobby_image.image_comments.count %>コメント</p>
      </div>
      <% if @user.current_user?(current_user) %>
-      <%= link_to "削除", hobby_image_path(image.id), method: :delete %>
+      <%= link_to "削除", hobby_image_path(hobby_image.id), method: :delete %>
      <% end %>
     </div>
    <% end %>

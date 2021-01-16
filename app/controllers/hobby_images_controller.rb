@@ -21,7 +21,7 @@ class HobbyImagesController < ApplicationController
   end
 
   def show
-    @image = HobbyImage.find(params[:id])
+    @hobby_image = HobbyImage.find_by(id: params[:id])
     @image_comment = ImageComment.new
   end
 
@@ -35,7 +35,7 @@ class HobbyImagesController < ApplicationController
   private
 
   def hobby_image_params
-    params.require(:hobby_image).permit(:image, :body, :user_id)
+    params.require(:hobby_image).permit(:body, :user_id, images_hobbies: [])
   end
 
 
