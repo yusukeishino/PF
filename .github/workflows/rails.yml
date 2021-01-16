@@ -19,7 +19,7 @@ jobs:
       with:
         submodules: true
       run: |
-        echo "$PRIVATE_KEY" > private_key && chmod 600 private_key &&
+        echo ${PRIVATE_KEY} > private_key && chmod 600 private_key &&
         ssh -o StrictHostKeyChecking=no -i private_key ${USER_NAME}@${HOST_NAME} -t 'cd PF &&
         git pull origin master &&
         ~/.rbenv/shims/bundle install &&
