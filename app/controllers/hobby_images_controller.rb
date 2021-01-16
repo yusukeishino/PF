@@ -21,7 +21,7 @@ class HobbyImagesController < ApplicationController
   end
 
   def show
-    @image = HobbyImage.find(params[:id])
+    @hobby_image = HobbyImage.find_by(id: params[:id])
     @image_comment = ImageComment.new
   end
 

@@ -6,7 +6,6 @@ class HobbyImage < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :images, dependent: :destroy
   accepts_attachments_for :images, attachment: :hobby
-  #attachment :image
 
   validates :images, presence: true
 
