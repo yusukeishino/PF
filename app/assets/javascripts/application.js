@@ -10,7 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery3
+//= require jquery
 //= require popper
 //= require bootstrap-sprockets
 //= require rails-ujs
@@ -20,13 +20,21 @@
 
 
 
+$(function() {
+  $('.slider').slick({
+      dots: true, //スライドの下にドットのナビゲーションを表示
+      autoplay: true, //自動再生
+      autoplaySpeed: 4000, //再生スピード
+  });
+});
+
 
 $(document).ready(function () {
   $(".image-index").skippr({
     // スライドショーの変化 ("fade" or "slide")
     transition : 'slide',
     // 変化に係る時間(ミリ秒)
-    speed : 1000,
+    speed : 2000,
     // easingの種類
     easing : 'easeOutQuart',
     // ナビゲーションの形("block" or "bubble")
@@ -36,7 +44,7 @@ $(document).ready(function () {
     // ナビゲーション矢印の表示(trueで表示)
     arrows : true,
     // スライドショーの自動再生(falseで自動再生なし)
-    autoPlay : true,
+    autoPlay : false,
     // 自動再生時のスライド切替間隔(ミリ秒)
     autoPlayDuration : 3000,
     // キーボードの矢印キーによるスライド送りの設定(trueで有効)
@@ -45,3 +53,6 @@ $(document).ready(function () {
     hidePrevious : false
   });
 });
+
+
+

@@ -11,15 +11,13 @@
       <p><%= hobby_image.user.name %></p>
      <% end %>
      <!--投稿画像-->
-     <div id="container">
-      <div class="image-index">
+     <div class="slider">
        <% hobby_image.images.each do |image| %>
         <%= link_to hobby_image_path(hobby_image.id) do %>
          <%= attachment_image_tag image, :hobby, size: "500x500" %>
         <% end %>
        <% end %>
-      </div>
-      </div>
+       </div>
      <div class="card-body">
      <p class="card-text">
      </p>
@@ -39,6 +37,7 @@
    <% end %>
   </div>
   <div class="col-sm-5">
+   <!--以下、ランキング-->
    <h2>いいね数ランキング</h2>
    <% @all_ranks.each.with_index(1) do |image,i| %>
    <div class="card mx-auto mt-4 shadow-lg">
@@ -61,5 +60,6 @@
   </div>
  </div>
 </div>
+
 
 
