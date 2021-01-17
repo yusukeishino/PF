@@ -2,13 +2,13 @@
 <h1>投稿詳細</h1>
  <div class="row">
   <div class="col-sm-7">
-  <!--投稿画像-->
-  <div id="container">
-   <div class="image-index">
-   <% @hobby_image.images.each do |image| %>
-     <%= attachment_image_tag image, :hobby, size: "500x500" %>
-   <% end %>
-   </div>
+   <!--投稿画像-->
+   <div class="card mx-auto mt-4 shadow-lg ">
+     <div class="slider">
+     <% @hobby_image.images.each do |image| %>
+      <%= attachment_image_tag image, :hobby, size: "500x500" %>
+     <% end %>
+     </div>
   </div>
   </div>
   <div class="col-sm-5">
