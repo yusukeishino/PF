@@ -19,7 +19,7 @@
 //= require_tree .
 
 
-
+// slickに使用するjs
 $(function() {
   $('.slider').slick({
       dots: true, //スライドの下にドットのナビゲーションを表示

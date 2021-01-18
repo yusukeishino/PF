@@ -23,9 +23,9 @@
      </p>
      <!--いいね機能-->
      <% if user_signed_in? %>
-     <div id="likes_buttons_<%= hobby_image.id %>">
-      <%= render 'favorites/favorites', image: hobby_image %>
-     </div>
+      <div id="likes_buttons_<%= hobby_image.id %>">
+       <%= render 'favorites/favorites', image: hobby_image %>
+      </div>
      <% end %>
      <!--画像説明-->
      <%= hobby_image.body.truncate(20) %>
