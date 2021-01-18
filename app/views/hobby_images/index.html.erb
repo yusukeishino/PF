@@ -4,12 +4,18 @@
    <h2>投稿一覧</h2>
    <% @images.each do |hobby_image| %>
     <div class="card mx-auto mt-4 shadow-lg ">
-     <!--プロフィール画像-->
-     <%= attachment_image_tag hobby_image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
-     <!--投稿者名-->
-     <%= link_to user_path(hobby_image.user) do %>
-      <p><%= hobby_image.user.name %></p>
-     <% end %>
+     <div class="user-image">
+      <div>
+      <!--プロフィール画像-->
+      <%= attachment_image_tag hobby_image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
+     </div>
+     <div>
+      <!--投稿者名-->
+      <%= link_to user_path(hobby_image.user) do %>
+       <p><%= hobby_image.user.name %></p>
+      <% end %>
+     </div>
+     </div>
      <!--投稿画像-->
      <div class="slider">
        <% hobby_image.images.each do |image| %>
@@ -44,12 +50,18 @@
    <% @all_ranks.each.with_index(1) do |image,i| %>
    <div class="card mx-auto mt-4 shadow-lg">
     <p><%= i %>位</p>
-    <!--プロフィール画像-->
-     <%= attachment_image_tag image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
-     <!--投稿者名-->
-     <%= link_to user_path(image.user) do %>
-      <p><%= image.user.name %></p>
-     <% end %>
+    <div class="user-image">
+     <div>
+      <!--プロフィール画像-->
+      <%= attachment_image_tag image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
+     </div>
+     <div>
+      <!--投稿者名-->
+      <%= link_to user_path(image.user) do %>
+       <p><%= image.user.name %></p>
+      <% end %>
+     </div>
+     </div>
      <!--投稿画像-->
      <% image.images.each do |image| %>
       <%= link_to hobby_image_path( image.id) do %>
