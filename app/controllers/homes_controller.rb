@@ -1,6 +1,7 @@
 class HomesController < ApplicationController
 
   def top
+    @images = HobbyImage.limit(3)
   end
 
   def news
@@ -9,5 +10,7 @@ class HomesController < ApplicationController
    @elements = page.at('div.topnews')  #atメソッドでdivクラスのtopnews内の情報を指定
    @elements = @elements.css('.ttlB').children  #cssメソッドでttlbの子要素を取得
   end
+  
+  
 
 end

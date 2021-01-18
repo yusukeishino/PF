@@ -3,12 +3,17 @@ Rails.application.routes.draw do
   devise_for :users
   ActiveAdmin.routes(self)
 
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
+
 
   root to: "homes#top"
   get 'news' => 'homes#news'
   get 'following' => 'users#following'
   get 'followed' => 'users#followed'
   get 'search/search'
+
 
 
   resources :users
