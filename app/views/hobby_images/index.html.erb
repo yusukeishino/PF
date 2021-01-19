@@ -47,28 +47,28 @@
   <div class="col-sm-5">
    <!--以下、ランキング-->
    <h2>いいね数ランキング</h2>
-   <% @all_ranks.each.with_index(1) do |image,i| %>
+   <% @all_ranks.each.with_index(1) do |hobby_image,i| %>
    <div class="card mx-auto mt-4 shadow-lg">
     <p><%= i %>位</p>
     <div class="user-image">
      <div>
       <!--プロフィール画像-->
-      <%= attachment_image_tag image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
+      <%= attachment_image_tag hobby_image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
      </div>
      <div>
       <!--投稿者名-->
-      <%= link_to user_path(image.user) do %>
-       <p><%= image.user.name %></p>
+      <%= link_to user_path(hobby_image.user) do %>
+       <p><%= hobby_image.user.name %></p>
       <% end %>
      </div>
      </div>
      <!--投稿画像-->
-     <% image.images.each do |image| %>
-      <%= link_to hobby_image_path( image.id) do %>
+     <% hobby_image.images.first(1).each do |image| %>
+      <%= link_to hobby_image_path(hobby_image.id) do %>
        <%= attachment_image_tag image, :hobby, size: "400x400", format: 'jpg', fallback: "no_image.jpg" %>
       <% end %>
      <% end %>
-     <p>♥<%= image.favorites.count %> いいね</p>
+     <p>♥<%= hobby_image.favorites.count %> いいね</p>
      </div>
    <% end %>
   </div>
