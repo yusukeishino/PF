@@ -10,7 +10,6 @@ class HobbyImagesController < ApplicationController
     if @image.save
      redirect_to hobby_images_path
     else
-     @image = HobbyImage.new
      render :new
     end
   end

@@ -1,0 +1,13 @@
+# モデルは全てactiverecord以下に記述する。
+# カラムはattributes以下に記述する。
+
+ja:
+  activerecord:
+    errors:
+      models:
+        inquiry:
+    attributes:
+     inquiry:
+        name: "名前"
+        address: "メールアドレス"
+        message: "お問い合わせ内容"
