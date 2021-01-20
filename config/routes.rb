@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'news' => 'homes#news'
   get 'following' => 'users#following'
   get 'followed' => 'users#followed'
+  get 'confirm' => 'inquirys#confirm'
   get 'search/search'
 
 

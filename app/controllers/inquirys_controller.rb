@@ -8,16 +8,19 @@ class InquirysController < ApplicationController
     @inquiry = Inquiry.new(inquiry_params)
     if @inquiry.save
        InquiryMailer.send_mail(@inquiry).deliver
-       redirect_to new_inquiry_path
+       redirect_to confirm_path
     else
       render :new
     end
   end
 
+  def confirm
+  end
+
   private
 
   def inquiry_params
-    params.require(:inquiry).permit(:name, :message)
+    params.require(:inquiry).permit(:name, :address, :message)
   end
 
 

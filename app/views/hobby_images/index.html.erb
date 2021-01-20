@@ -47,28 +47,63 @@
   <div class="col-sm-5">
    <!--以下、ランキング-->
    <h2>いいね数ランキング</h2>
-   <% @all_ranks.each.with_index(1) do |hobby_image,i| %>
-   <div class="card mx-auto mt-4 shadow-lg">
-    <p><%= i %>位</p>
-    <div class="user-image">
-     <div>
-      <!--プロフィール画像-->
-      <%= attachment_image_tag hobby_image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
-     </div>
-     <div>
-      <!--投稿者名-->
-      <%= link_to user_path(hobby_image.user) do %>
-       <p><%= hobby_image.user.name %></p>
+   <!--lastFavoritesはその投稿のいいね数を代入するための場所-->
+   <% lastFavorite = 0 %>
+   <!--jは順位を示す変数。記号は何でもよい。-->
+   <% j = 1 %>
+   <% @all_ranks.each.with_index(1) do |ranking,i| %>
+     <div class="card mx-auto mt-4 shadow-lg">
+      <% if i == 1 %>
+       <% lastFavorite = ranking.favorites.count %>
       <% end %>
-     </div>
-     </div>
-     <!--投稿画像-->
-     <% hobby_image.images.first(1).each do |image| %>
-      <%= link_to hobby_image_path(hobby_image.id) do %>
-       <%= attachment_image_tag image, :hobby, size: "400x400", format: 'jpg', fallback: "no_image.jpg" %>
+      <!--1位はelseの下に行き、2位以下はelseの上を回る-->
+      <% if ranking.favorites.count != lastFavorite %>
+       <% j = i %>
+       <p>第<%= j %>位</p>
+        <div class="user-image">
+         <div>
+         <!--プロフィール画像-->
+          <%= attachment_image_tag ranking.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
+         </div>
+         <div>
+         <!--投稿者名-->
+         <%= link_to user_path(ranking.user) do %>
+           <p><%= ranking.user.name %></p>
+         <% end %>
+         </div>
+        </div>
+        <!--投稿画像-->
+        <% ranking.images.first(1).each do |image| %>
+         <%= link_to hobby_image_path(ranking.id) do %>
+          <%= attachment_image_tag image, :hobby, size: "400x400", format: 'jpg', fallback: "no_image.jpg" %>
+         <% end %>
+        <% end %>
+       <p>♥<%= ranking.favorites.count %> いいね</p>
+       <!--↓ここでfavorites.countをlastFavoritesに代入して57行目のlastFavoritesに代入する-->
+       <% lastFavorite = ranking.favorites.count %>
+      <% else %>
+       <% lastFavorite = ranking.favorites.count %>
+        <p>第<%= j %>位</p>
+        <div class="user-image">
+         <div>
+          <!--プロフィール画像-->
+           <%= attachment_image_tag ranking.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
+         </div>
+         <div>
+          <!--投稿者名-->
+          <%= link_to user_path(ranking.user) do %>
+           <p><%= ranking.user.name %></p>
+          <% end %>
+         </div>
+        </div>
+        <!--投稿画像-->
+        <% ranking.images.first(1).each do |image| %>
+         <%= link_to hobby_image_path(ranking.id) do %>
+          <%= attachment_image_tag image, :hobby, size: "400x400", format: 'jpg', fallback: "no_image.jpg" %>
+         <% end %>
+        <% end %>
+        <p>♥<%= ranking.favorites.count %> いいね</p>
       <% end %>
-     <% end %>
-     <p>♥<%= hobby_image.favorites.count %> いいね</p>
      </div>
    <% end %>
   </div>

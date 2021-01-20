@@ -1,6 +1,7 @@
 <div class="container">
  <div class="row">
   <div class="col-sm-12">
+   <div class="home"></div>
    <h1>Hobby Graph</h1>
    <p>
      Hobby Graphはプラモデルなど玩具好きのためのsnsです。<br>
@@ -8,32 +9,7 @@
      登録しなくても閲覧は可能です！<br>
      皆さんで盛り上げていきましょう！！
    </p>
-   
-   <div class="home-images">
-    <% @images.each do |hobby_image| %>
-     <div class="card shadow-lg">
-      <div class="user-image">
-       <div>
-        <!--プロフィール画像-->
-        <%= attachment_image_tag hobby_image.user, :user_image, size: "50x50", format: 'jpg', fallback: "no_image.jpg" %>
-       </div>
-       <div>
-        <!--投稿者名-->
-        <%= link_to user_path(hobby_image.user) do %>
-         <p><%= hobby_image.user.name %></p>
-        <% end %>
-       </div>
-      </div>
-      <!--投稿画像-->
-       <% hobby_image.images.first(1).each do |image| %>
-        <%= link_to hobby_image_path(hobby_image.id) do %>
-         <%= attachment_image_tag image, :hobby, size: "200x200" %>
-        <% end %>
-       <% end %>
-      </div>
-    <% end %>
-</div>
-</div>
-</div>
+  </div>
+ </div>
 </div>
 
