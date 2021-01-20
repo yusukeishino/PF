@@ -1,0 +1,11 @@
+# モデルは全てactiverecord以下に記述する。
+# カラムはattributes以下に記述する。
+
+ja:
+  activerecord:
+    errors:
+      models:
+        hobby_image:
+    attributes:
+     hobby_image:
+        images: "画像"
