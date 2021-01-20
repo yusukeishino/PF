@@ -18,8 +18,8 @@
   <div class="col-sm-7">
     <!--ユーザーネーム入力-->
     <table>
-     <tr><th><label for="inputName">Name</label></th><td><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%></td></tr>
-     <tr><th><label for="inputBody">introduction</label></th><td><%= f.text_area :body, autofocus: true, id:"inputBody", placeholder:"自己紹介"%></td></tr>
+     <tr><th><label for="inputName"><p>Name</p></label></th><td><%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%></td></tr>
+     <tr><th><label for="inputBody"><p>introduction</p></label></th><td><%= f.text_area :body, autofocus: true, id:"inputBody", placeholder:"自己紹介"%></td></tr>
     </table>
    <%= f.submit "変更を保存" %>
   </div>

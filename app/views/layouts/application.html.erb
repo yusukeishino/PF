@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title class="title">Hobby Graph</title>
+    <title class="title">Hobby Graph!!</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <script src="https://kit.fontawesome.com/e8f000d4c1.js" crossorigin="anonymous"></script>
@@ -21,7 +21,7 @@
      <div class="col-sm-4">
       <!--ロゴ-->
       <%= link_to root_path do %>
-       <p></p><div class="logp"><%= image_tag 'hg-logo.png', size: "60x60" %>Hobby Graph</div></p>
+       <p></p><div class="logp"><%= image_tag 'hg-logo.png', size: "60x60" %>Hobby Graph!!</div></p>
       <% end %>
      </div>
      <div class="col-sm-8">
@@ -42,10 +42,10 @@
         <%=link_to "News", news_path %>
        </li>
        <li class="nav-item">
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <%= link_to "お問い合わせ", new_inquiry_path %>
        </li>
        <li class="nav-item">
-        <%= link_to "お問い合わせ", new_inquiry_path %>
+        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
        </li>
        <li>
         <!--検索ウィンドウ-->
