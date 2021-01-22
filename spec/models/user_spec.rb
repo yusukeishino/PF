@@ -1,47 +1,26 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+RSpec.describe 'Userモデルのテスト', type: :model do
+  describe 'バリデーションのテスト' do
+    #subject { user.valid? }
 
+    #let!(:user) do
+     # User.create({id:1,email:'test@gmail.com',name:'test',body:'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq'})
+    #end
 
-  it "名前とメールアドレスとパスワードがあれば登録できる" do
-    user = User.new(
-     name: "testman",
-     email: "testman@example.com",
-     password: "password",
-     )
-     # オブジェクトをexpectに渡した時に、有効である(be valid)という意味になります
-     expect(user).to be_valid
-
+    context 'ユーザーのbodyが51文字以上の場合' do
+      it 'ユーザーが保存できない' do
+        expect(FactoryBot.build(:user)).to be_invalid
+      end
+    end
   end
 
-  it "名前がなければ登録できない" do
-   user = User.new(
-    name: nil,
-     email: "testman@example.com",
-     password: "password",
-     )
-     # valid?メソッドを呼び出すとエラー検証が行えます。次行のerrorsメソッドを使うために必要です。
-　　　user.valid?
-     # valid?メソッドでfalseであれば、user.errosでどんなerrorを持っているか返してくれます。今回は特に[:first_name]のエラーがみたいのでexpect()内部で指定してあげます。
-　　　# 今回は"can't be blank"というエラーを含んでいる(include)しているはずという記述になります。複数含む場合ももちろんあります。
-     expect(user.errors[:first_name]).to include("can't be blank")
+  describe 'アソシエーションのテスト' do
+    context 'Hobby_imageモデルとの関係' do
+      it '1:Nとなっている' do
+        expect(User.reflect_on_association(:hobby_images).macro).to eq :has_many
+      end
+    end
   end
-
-  it "メールアドレスがなければ登録できない" do
-      user = User.new(
-     name: "testman",
-     email: nil,
-     password: "password",
-     )
-     # オブジェクトをexpectに渡した時に、有効である(be valid)という意味になります
-     expect(user).to be_valid
-  end
-
-  it "メールアドレスが重複していたら登録できない"
-
-  it "パスワードがなければ登録できない"
-
-  it "パスワードが暗号化されているか"
-
 end
+

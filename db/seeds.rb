@@ -8,3 +8,9 @@
 
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+User.create(
+  name: Faker::JapaneseMedia::StudioGhibli.character,
+  introduction: Faker::JapaneseMedia::StudioGhibli.character,
+  email: Faker::Internet.email,
+  )

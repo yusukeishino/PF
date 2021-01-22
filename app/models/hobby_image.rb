@@ -8,6 +8,7 @@ class HobbyImage < ApplicationRecord
   accepts_attachments_for :images, attachment: :hobby
 
   validates :images, presence: true
+  validates :body, length: { maximum: 600 }
 
 
   def favorited_by?(user)

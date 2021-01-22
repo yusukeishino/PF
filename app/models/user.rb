@@ -11,6 +11,7 @@ class User < ApplicationRecord
   attachment :user_image
 
   validates :name, presence: true, length: {maximum: 20}
+  validates :body, length: {maximum: 50}
   validates :email, uniqueness: true
   validates :password, presence: true
 
