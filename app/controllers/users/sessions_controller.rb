@@ -6,4 +6,8 @@ class Users::SessionsController < Devise::SessionsController
     redirect_to root_path
   end
 
+  # def new
+  #   super
+  # end
+
 end

@@ -5,7 +5,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
 
     context 'ユーザーのbodyが51文字以上の場合' do
       it 'ユーザーが保存できない' do
-        expect(FactoryBot.build(:user)).to be_invalid
+        expect(FactoryBot.build(:user,:body_over)).to be_invalid
       end
     end
   end
