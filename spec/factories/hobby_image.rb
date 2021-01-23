@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :hobby_image do
-    body { Faker::Lorem.characters(number:600)}
+    body { Faker::Lorem.characters(number:601)}
   end
 end

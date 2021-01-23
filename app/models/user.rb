@@ -13,7 +13,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: {maximum: 20}
   validates :body, length: {maximum: 50}
   validates :email, uniqueness: true
-  validates :password, presence: true
+
 
   # フォロー/フォロワー
  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy

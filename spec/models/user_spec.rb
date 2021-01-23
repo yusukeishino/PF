@@ -2,11 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'Userモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
-    #subject { user.valid? }
-
-    #let!(:user) do
-     # User.create({id:1,email:'test@gmail.com',name:'test',body:'qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq'})
-    #end
 
     context 'ユーザーのbodyが51文字以上の場合' do
       it 'ユーザーが保存できない' do
