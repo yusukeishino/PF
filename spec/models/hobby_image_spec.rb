@@ -9,7 +9,7 @@ RSpec.describe 'Hobby_imageモデルのテスト', type: :model do
 
     context 'bodyカラムが600文字を超える場合' do
       it '保存されない' do
-        expect(FactoryBot.build(hobby_image_body)).to be_invalid
+        expect(FactoryBot.build(:hobby_image)).to be_invalid
       end
     end
   end
