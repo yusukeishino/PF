@@ -1,6 +1,14 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!,except: [:top, :news, :index]
+  before_action :authenticate_user!,except: [:top, :news, :index, :search]
    before_action :configure_permitted_parameters, if: :devise_controller?
+
+   def after_sign_in_path_for(resource)
+    hobby_images_path
+   end
+
+   def after_inactive_sign_up_path_for(resource)
+    hobby_images_path
+   end
 
   protected
 
