@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
+  
+  
 end
 
 # describe '[STEP3] 仕上げのテスト' do
