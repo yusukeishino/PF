@@ -7,10 +7,10 @@ RSpec.describe 'Users', type: :system do
        visit root_path
     end
     context 'ヘッダーのテスト' do
-      # it 'HobbyGraph!!を押すと、root_pathに遷移する' do
-      #   click_link 'HobbyGraph!!'
-      #   expect(current_path).to eq root_path
-      # end
+       it 'Hobby Graph!!を押すと、root_pathに遷移する' do
+         click_link 'Hobby Graph!!'
+         expect(current_path).to eq root_path
+       end
       it '投稿一覧を押すと、投稿一覧に遷移する' do
          click_link '投稿一覧'
          expect(current_path).to eq hobby_images_path
