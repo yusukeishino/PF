@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
 
-  describe 'ログイン前のテスト' do
+  describe 'ログイン後のテスト' do
      before do
        visit root_path
     end
@@ -50,14 +50,16 @@ RSpec.describe 'Users', type: :system do
 
      context 'マイページのテスト' do
        before do
-        user = FactoryBot.create(:user)
+        @user = FactoryBot.create(:user)
         visit new_user_session_path
-        fill_in 'Email', with: user.email
-        fill_in 'Password', with: user.password
+        fill_in 'Email', with: @user.email
+        fill_in 'Password', with: @user.password
         click_button 'ログイン'
         click_link 'マイページ'
-        visit user_path(3)
+        visit user_path(@user.id)
       end
+
+
       it 'フォロー数を押すと、フォロー画面へ遷移する' do
         click_link 'フォロー数:0'
         redirect_params = Rack::Utils.parse_query(URI.parse(current_path).query)
@@ -70,14 +72,20 @@ RSpec.describe 'Users', type: :system do
       end
       it 'プロフィール編集を押すと、user/editへ遷移する' do
         click_link 'プロフィール編集'
-        expect(current_path).to eq edit_user_path(3)
+        expect(current_path).to eq edit_user_path(@user.id)
       end
       it '投稿を押すと、hobby_image/showへ遷移する' do
-         user = FactoryBot.create(:hobby_image)
+         hobby_image = FactoryBot.create(:hobby_image)
          visit hobby_image_path(1)
          expect(current_path).to eq hobby_image_path(1)
       end
+      it '正しく削除される' do
+         hobby_image = FactoryBot.create(:hobby_image)
+         expect{ hobby_image.destroy }.to change{ HobbyImage.count }.by(-1)
+         expect(current_path).to eq user_path(@user.id)
+       end
      end
+    end
 
      context'user編集のテスト' do
        before do
@@ -91,8 +99,6 @@ RSpec.describe 'Users', type: :system do
         visit edit_user_path(3)
      end
      it 'ユーザーを編集する' do
-       #attach_file 'user_user_image', "#{Rails.root}/app/assets/images/no_image.jpg"
-       #attach_file 'user_user_image', with: Rack::Test::UploadedFile.new('#{Rails.root}/app/assets/images/no_image.jpg', 'image/jpeg')
        attach_file 'user_user_image', "#{Rails.root}/app/assets/images/no_image.jpg"
        fill_in 'inputName', with: Faker::Lorem.characters(number:5)
        fill_in 'inputBody', with: Faker::Lorem.characters(number:50)
@@ -140,6 +146,5 @@ RSpec.describe 'Users', type: :system do
         expect(current_path).to eq confirm_path
       end
      end
-   end
-end
+  end
 
