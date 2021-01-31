@@ -34,8 +34,8 @@
    <div class="images">
    <% @hobby_images.each do |hobby_image| %>
     <div class="user_card card mt-2 mr-1 shadow-lg ">
-     <!--投稿画像-->
      <div>
+      <!--投稿画像-->
       <% hobby_image.images.first(1).each do |image| %>
        <%= link_to hobby_image_path(hobby_image.id) do %>
         <%= attachment_image_tag image, :hobby, size: "100x100", format: 'jpg', fallback: "no_image.jpg" %>

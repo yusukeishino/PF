@@ -15,7 +15,7 @@
 <img id="preview_4" style="width:15%;">
 <%= form_with model: @image, local:true do |f| %>
  <h4>画像</h4>
-　<!--has_many = imagesモデルの中の複数のhobbyを投稿するという意味-->
+ <!--has_many = imagesモデルの中の複数のhobbyを投稿するという意味-->
  <%= f.attachment_field :images_hobbies, multiple: true %>
  <h4>説明</h4>
  <%= f.text_area :body %>
