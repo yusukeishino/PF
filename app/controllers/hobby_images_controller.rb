@@ -8,6 +8,14 @@ class HobbyImagesController < ApplicationController
     @image = HobbyImage.new(hobby_image_params)
     @image.user_id = current_user.id
     if @image.save
+      @image.images_hobbies.each do |i|
+        if Vision.is_safe_image(i)
+          pp true
+        else
+          # render :new
+          pp false
+        end
+      end
      redirect_to hobby_images_path
     else
      render :new
