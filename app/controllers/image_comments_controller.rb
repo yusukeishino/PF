@@ -5,6 +5,7 @@ class ImageCommentsController < ApplicationController
    @comment = current_user.image_comments.new(image_comment_params)
    @comment.hobby_image_id = @image.id
    @comment.save
+   
   end
 
   def destroy
