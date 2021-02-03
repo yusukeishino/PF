@@ -12,8 +12,10 @@ class HobbyImagesController < ApplicationController
         if Vision.is_safe_image(i)
           pp true
         else
-          # render :new
+          flash[:notice] = "投稿画像がふさわしくない可能性があります。"
           pp false
+          @image.destroy
+          render :new and return
         end
       end
      redirect_to hobby_images_path
