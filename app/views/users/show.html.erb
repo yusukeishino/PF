@@ -18,11 +18,9 @@
    <% end %>
    <!--@user == current_userはmodelに定義-->
    <% unless @user.current_user?(current_user) %>
-    <% if current_user.following?(@user) %>
-     <%= link_to 'フォロー外す', unfollow_path(@user.id), method: :POST %>
-    <% else %>
-     <%= link_to 'フォローする', follow_path(@user.id), method: :POST %>
-    <% end %>
+     <div id="follow_buttons_<%= @user.id %>">
+      <%= render 'users/follow', user: @user %>
+     </div>
    <% end %>
    <!--プロフィール編集リンク、@user == current_userはmodelに定義-->
    <% if @user.current_user?(current_user) %>
