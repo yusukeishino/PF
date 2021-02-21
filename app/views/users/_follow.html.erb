@@ -1,5 +1,5 @@
 <% if current_user.following?(user) %>
-  <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST, remote: true %>
+  <%= link_to 'フォロー外す', unfollow_path(user.id), method: :POST, remote: true, class: 'text-danger' %>
 <% else %>
-  <%= link_to 'フォローする', follow_path(user.id), method: :POST, remote: true %>
+  <%= link_to 'フォローする', follow_path(user.id), method: :POST, remote: true, class: 'text-success' %>
 <% end %>
