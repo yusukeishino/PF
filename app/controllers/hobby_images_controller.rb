@@ -1,5 +1,4 @@
 class HobbyImagesController < ApplicationController
-
   def new
     @image = HobbyImage.new
   end
@@ -12,15 +11,15 @@ class HobbyImagesController < ApplicationController
         if Vision.is_safe_image(i)
           pp true
         else
-          flash[:notice] = "投稿画像がふさわしくない可能性があります。"
+          flash[:notice] = '投稿画像がふさわしくない可能性があります。'
           pp false
           @image.destroy
           render :new and return
         end
       end
-     redirect_to hobby_images_path
+      redirect_to hobby_images_path
     else
-     render :new
+      render :new
     end
   end
 
@@ -40,12 +39,9 @@ class HobbyImagesController < ApplicationController
     redirect_to user_path(current_user.id)
   end
 
-
   private
 
   def hobby_image_params
     params.require(:hobby_image).permit(:body, :user_id, images_hobbies: [])
   end
-
-
 end

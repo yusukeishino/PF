@@ -1,5 +1,5 @@
 Capybara.register_driver :chrome do |app|
-  args = %w(disable-gpu mute-audio window-size=1280,800 lang=ja)
+  args = %w[disable-gpu mute-audio window-size=1280,800 lang=ja]
   args << 'headless' unless ENV['NO_HEADLESS']
 
   Capybara::Selenium::Driver.new(

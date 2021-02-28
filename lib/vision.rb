@@ -9,16 +9,16 @@ module Vision
 
       # APIリクエスト用のJSONパラメータ
       params = {
-       requests: [{
-         image: {
-           content: base64_image
-         },
-         features: [
-           {
-             type: 'SAFE_SEARCH_DETECTION'
-           }
-         ]
-       }]
+        requests: [{
+          image: {
+            content: base64_image
+          },
+          features: [
+            {
+              type: 'SAFE_SEARCH_DETECTION'
+            }
+          ]
+        }]
       }.to_json
 
       # Google Cloud Vision APIにリクエスト
@@ -33,12 +33,11 @@ module Vision
       result = JSON.parse(response.body)['responses'][0]['safeSearchAnnotation']['adult']
 
       # # 不適切な画像はfalse
-      if result.eql?("LIKELY") || result.eql?("VERY_LIKELY")
-       false
+      if result.eql?('LIKELY') || result.eql?('VERY_LIKELY')
+        false
       else
         true
       end
-
     end
   end
 end

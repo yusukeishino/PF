@@ -2,9 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'Hobby_imageモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
-
-
-
     context 'bodyカラムが600文字を超える場合' do
       it '保存されない' do
         expect(FactoryBot.build(:hobby_image)).to be_invalid
@@ -21,5 +18,5 @@ RSpec.describe 'Hobby_imageモデルのテスト', type: :model do
   end
 end
 
-#user = ["A", "B", "C"]
-#taro = {name:'Taro', age:22, height:175}
+# user = ["A", "B", "C"]
+# taro = {name:'Taro', age:22, height:175}

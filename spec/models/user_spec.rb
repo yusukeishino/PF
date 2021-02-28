@@ -2,10 +2,9 @@ require 'rails_helper'
 
 RSpec.describe 'Userモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
-
     context 'ユーザーのbodyが51文字以上の場合' do
       it 'ユーザーが保存できない' do
-        expect(FactoryBot.build(:user,:body_over)).to be_invalid
+        expect(FactoryBot.build(:user, :body_over)).to be_invalid
       end
     end
   end
@@ -18,4 +17,3 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     end
   end
 end
-
