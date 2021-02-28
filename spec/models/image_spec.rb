@@ -2,7 +2,6 @@ require 'rails_helper'
 
 RSpec.describe 'Imageモデルのテスト', type: :model do
   describe 'バリデーションのテスト' do
-
     context '画像が1枚の場合' do
       it '投稿成功' do
         expect(FactoryBot.build(:image)).to be_valid
@@ -18,4 +17,3 @@ RSpec.describe 'Imageモデルのテスト', type: :model do
   #   end
   # end
 end
-

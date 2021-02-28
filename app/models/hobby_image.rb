@@ -1,5 +1,5 @@
 class HobbyImage < ApplicationRecord
-  #元々ある画像用モデル
+  # 元々ある画像用モデル
 
   belongs_to :user
   has_many :image_comments, dependent: :destroy
@@ -10,9 +10,7 @@ class HobbyImage < ApplicationRecord
   validates :images, presence: true
   validates :body, length: { maximum: 600 }
 
-
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
-
 end
